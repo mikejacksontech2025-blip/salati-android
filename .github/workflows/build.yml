@@ -17,8 +17,10 @@ jobs:
           java-version: '17'
 
       - name: Build Debug APK
-        working-directory: ./برنامج
         run: |
+          # العثور على مسار المجلد الذي يحتوي على gradlew والدخول إليه تلقائياً
+          GRADLE_DIR=$(find . -name "gradlew" -exec dirname {} \;)
+          cd "$GRADLE_DIR"
           chmod +x gradlew
           ./gradlew assembleDebug
 
