@@ -16,9 +16,18 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Build Salati APK
+      - name: Find and Build Salati APK
         run: |
-          chmod +x gradlew || true
+          # البحث التلقائي عن المجلد الذي يحتوي على gradlew والدخول إليه
+          GRADLE_FILE=$(find . -name "gradlew" -print -quit)
+          if [ -z "$GRADLE_FILE" ]; then
+            echo "Error: gradlew not found anywhere in the repository!"
+            exit 1
+          fi
+          PROJECT_DIR=$(dirname "$GRADLE_FILE")
+          echo "Found project at: $PROJECT_DIR"
+          cd "$PROJECT_DIR"
+          chmod +x gradlew
           ./gradlew assembleDebug -Djava.awt.headless=true --no-daemon
 
       - name: Upload APK Artifact
@@ -26,5 +35,4 @@ jobs:
         with:
           name: salati-app-debug
           path: |
-            app/build/outputs/apk/debug/*.apk
             **/build/outputs/apk/debug/*.apk
