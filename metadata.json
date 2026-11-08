@@ -1,0 +1,6 @@
+{
+  "name": "صَلَاتِي - SALATI",
+  "description": "تطبيق صَلَاتِي لمواقيت الصلاة، منبه الأذان، مكتبة الأصوات، والمنبهات اليومية بتصميم إسلامي فاخر من تطوير وتوقيع SALAH.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
