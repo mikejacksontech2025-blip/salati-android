@@ -18,7 +18,6 @@ jobs:
 
       - name: Build Debug APK with Gradle
         run: |
-          # البحث عن مكان ملف gradlew وتفيذه تلقائياً
           GRADLE_PATH=$(find . -name "gradlew" -maxdepth 3)
           if [ -z "$GRADLE_PATH" ]; then
             echo "Gradlew not found!"
