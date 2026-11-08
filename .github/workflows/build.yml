@@ -16,15 +16,9 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Build Debug APK with Gradle
+      - name: Build Debug APK
+        working-directory: ./برنامج
         run: |
-          GRADLE_PATH=$(find . -name "gradlew" -maxdepth 3)
-          if [ -z "$GRADLE_PATH" ]; then
-            echo "Gradlew not found!"
-            exit 1
-          fi
-          PROJECT_DIR=$(dirname "$GRADLE_PATH")
-          cd "$PROJECT_DIR"
           chmod +x gradlew
           ./gradlew assembleDebug
 
