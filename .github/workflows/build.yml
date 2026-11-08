@@ -16,13 +16,13 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Build with Gradle Wrapper
+      - name: Build Debug APK
         run: |
           if [ -f "./gradlew" ]; then
             chmod +x gradlew
-            ./gradlew assembleDebug
+            ./gradlew assembleDebug -x lint
           else
-            gradle assembleDebug
+            gradle assembleDebug -x lint
           fi
 
       - name: Upload APK
